@@ -9,8 +9,14 @@ router.get('/time', (req, res, next) => {
 })
 
 router.post('/hash', (req, res, next) => {
-    
+    const plainText = req.body.plainText;
+    const hash = crypto.createHash('md5').update(plainText).digest('hex')
+    res.json({
+        plainText,
+        hash
+    })
 })
+
 router.get("/h", (req, res, next) => {
     res.render('index', {name: "ppp"})
    });
